@@ -28,14 +28,16 @@ public class RollTheDice {
      * 또한, 입력값이 double임으로 60으로 나눈 이후 int로 캐스팅이 필요합니다.
      */
     private static void fillArray(double result) {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+        int index = (int) (result / 60);
+        if (index >= frequency.length) {
+            frequency = extendArray(index + 1);
+        }
+        frequency[index]++;
     }
 
-    /**
-     * 해당 메서드는 다음과 같은 역할을 가져야 합니다 :
-     * 주어진 값의 크기만큼 배열을 생성한 후, 기존 배열에 있던 데이터를 복사해 반환해야 합니다.
-     */
     private static int[] extendArray(int next) {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+        int[] newArray = new int[next];
+        System.arraycopy(frequency, 0, newArray, 0, frequency.length);
+        return newArray;
     }
 }
